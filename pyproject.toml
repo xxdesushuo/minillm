@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "minillm"
+version = "0.0.1"
+description = "《模型算法》配套代码：记账、写零件、跑实验"
+requires-python = ">=3.10"
+# 注意：torch 不写进依赖。它要按平台单独装（笔记本 / 云服务器的 CUDA 版本不同，云镜像多数已自带），
+# 写进来会在 pip install 时覆盖掉已经装好的 torch。
+dependencies = ["numpy", "pyyaml"]
+
+[project.optional-dependencies]
+hf  = ["transformers", "accelerate", "safetensors"]
+viz = ["matplotlib"]
+w2v = ["gensim"]
+dev = ["pytest", "ruff"]
+
+[tool.setuptools.packages.find]
+include = ["minillm*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+markers = [
+    "torch: 需要 PyTorch",
+    "hf: 需要加载 HF 模型权重（默认跳过，RUN_HF=1 时运行）",
+    "gpu: 需要 GPU",
+    "cloud: 超出笔记本能力（如 7B 以上模型），只在租的服务器上跑（RUN_CLOUD=1）",
+    "slow: 运行较慢",
+]
+
+[tool.ruff]
+line-length = 100

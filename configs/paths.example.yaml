@@ -1,0 +1,8 @@
+# 复制为 configs/paths.yaml 并填本机路径。paths.yaml 已被 .gitignore 忽略。
+# 代码里一律通过 minillm.utils.config.load_paths() 取路径，不要把路径写死在代码里。
+models:
+  qwen3_1_7b: /path/to/Qwen3-1.7B
+  qwen3_1_7b_base: /path/to/Qwen3-1.7B-Base
+  tinyllama: /path/to/TinyLlama-1.1B
+data:
+  intent_eval: /path/to/intent_eval.jsonl   # 公司数据：只放路径，数据本身永远不进仓库

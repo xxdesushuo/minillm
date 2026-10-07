@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# 模型权重：永远不进仓库
+models/
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.gguf
+*.onnx
+
+# 数据：公司数据、下载的数据集都不进仓库
+data/
+*.jsonl
+*.parquet
+
+# 本机配置（路径、token）
+configs/paths.yaml
+.env
+
+# 实验的大文件：只提交 summary 和图，原始输出放 raw/
+experiments/*/results/raw/
+wandb/
+runs/
+
+# 系统
+.DS_Store
+Thumbs.db
